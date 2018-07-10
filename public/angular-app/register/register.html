@@ -1,0 +1,45 @@
+<h1>Welcome!</h1>
+
+<div ng-if="vm.message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+  <img ngf-src="vm.profilePicture" ngf-size="{width:200, height:200, quality:1.0}"/>
+</div>
+
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  <p>{{ vm.error }}</p>
+</div>
+
+<form ng-hide="vm.message" name="register" ng-submit="vm.register()">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="eg. john.smith@example.com" ng-model="vm.email" autocapitalize="none"/>
+  </div>
+
+  <div class="form-group">
+    <label for="fname">First Name</label>
+    <input type="fname" pattern='[a-zA-Z]+' class="form-control" id="fname" placeholder="eg. John" ng-model="vm.fname" autocapitalize="none"/>
+  </div>
+
+  <div class="form-group">
+    <label for="lname">Last Name</label>
+    <input type="lname" pattern='[a-zA-Z]+' oninvalid="setCustomValidity('Please enter only alphabets.')" class="form-control" id="lname" placeholder="eg. Smith" ng-model="vm.lname" autocapitalize="none"/>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Enter password" ng-model="vm.password" autocapitalize="none"/>
+  </div>
+
+  <div class="form-group">
+    <label for="password-repeat">Re-enter Password</label>
+    <input type="password" class="form-control" id="password-repeat" placeholder="Confirm password" ng-model="vm.passwordRepeat" autocapitalize="none"/>
+  </div>
+
+  <div class="form-group">
+    <label for="profilePicture">Upload Photo</label>
+    <input type="file" class="form-control" id="profilePicture" ng-model="vm.profilePicture"/>
+  </div>
+
+<button type="submit" class="btn btn-success">Submit</button>
+
+</form>
