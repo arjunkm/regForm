@@ -1,3 +1,5 @@
+Download and unzip project folder.
+
 Open Terminal.
 
 Navigate to project folder '/bitlumeQuestion'
