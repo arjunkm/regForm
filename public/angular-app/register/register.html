@@ -1,15 +1,15 @@
+<br/>
 <h1>Welcome!</h1>
-
 <div ng-if="vm.message" class="alert alert-success" role="alert">
   <p>{{ vm.message }}</p>
-  <img ngf-src="vm.profilePicture" ngf-size="{width:200, height:200, quality:1.0}"/>
+<!--  <img ng-show="registerForm.file.$valid" ngf-thumbnail="vm.profilePicture"/> -->
+  <img ngf-src="vm.profilePicture" style="width:200px;height:200px;" ng-show="true" alt="Profile Picture" class="ng-show"/>
 </div>
 
 <div ng-if="vm.error" class="alert alert-danger" role="alert">
   <p>{{ vm.error }}</p>
 </div>
-
-<form ng-hide="vm.message" name="register" ng-submit="vm.register()">
+<form ng-hide="vm.message" name="registerForm" ng-submit="vm.register()">
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email" class="form-control" id="email" placeholder="eg. john.smith@example.com" ng-model="vm.email" autocapitalize="none"/>
@@ -17,12 +17,12 @@
 
   <div class="form-group">
     <label for="fname">First Name</label>
-    <input type="fname" pattern='[a-zA-Z]+' class="form-control" id="fname" placeholder="eg. John" ng-model="vm.fname" autocapitalize="none"/>
+    <input type="fname" pattern='[a-zA-Z]+' oninvalid='alert("First name can have only alphabets!")' class="form-control" id="fname" placeholder="eg. John" ng-model="vm.fname" autocapitalize="none"/>
   </div>
 
   <div class="form-group">
     <label for="lname">Last Name</label>
-    <input type="lname" pattern='[a-zA-Z]+' oninvalid="setCustomValidity('Please enter only alphabets.')" class="form-control" id="lname" placeholder="eg. Smith" ng-model="vm.lname" autocapitalize="none"/>
+    <input type="lname" pattern='[a-zA-Z]+' oninvalid='alert("Last name can have only alphabets!")' class="form-control" id="lname" placeholder="eg. Smith" ng-model="vm.lname" autocapitalize="none"/>
   </div>
 
   <div class="form-group">
@@ -37,9 +37,8 @@
 
   <div class="form-group">
     <label for="profilePicture">Upload Photo</label>
-    <input type="file" class="form-control" id="profilePicture" ng-model="vm.profilePicture"/>
+    <input type="file" name="file" class="form-control" id="profilePicture" ng-model="vm.profilePicture" ngf-max-size="20MB" ngf-accept="'image/*'"/>
   </div>
 
-<button type="submit" class="btn btn-success">Submit</button>
-
+  <button type="submit" class="btn btn-success">Submit</button>
 </form>

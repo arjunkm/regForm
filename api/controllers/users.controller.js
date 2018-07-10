@@ -3,16 +3,18 @@ var User = mongoose.model('User');
 var bcrypt = require('bcrypt');
 var multer = require('multer');
 var app = require('express');
+var appExport = require('/Users/arjunkm/Desktop/bitlumeQuestion/app.js');
 
 module.exports.register = function(req, res){
 
-  // Expermental photo-upload code.
+  // Expermental profile picture-upload code.
   // var storage = multer.diskStorage({
   //   destination : function(req, file, cb){
-  //     cb(null, './web/')
+  //     cb(null, './web/') //set dest folder
   //   },
   //   filename: function(req, file, cb){
   //     var dateTimeStamp = Date.now();
+          // rename to avoid problems wtih  duplicate files
   //     cb(null, file.fieldname + '-' + dateTimeStamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1])
   //   }
   // });
@@ -42,15 +44,20 @@ module.exports.register = function(req, res){
           .status(400)
           .json(err);
       } else {
-        console.log("User created", user);
+        appExport.upload(req, res, function (err) {
+         if (err) {
+            //return res.json(err);
+            console.log(err);
+         }
+        //return res.end("File uploaded sucessfully!.");
+        console.log("User created.");
         res
           .status(201)
           .json(user);
-      }
+      });
     }
-  );
-};
-
+  });
+}
 
 
 // module.exports.login = function(req, res){

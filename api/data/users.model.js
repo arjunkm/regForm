@@ -25,6 +25,12 @@ var userSchema = new mongoose.Schema({
   {
     type: String,
     required: true
+  },
+
+  img:
+  {
+    data: Buffer,
+    contentType: String 
   }
 
 });

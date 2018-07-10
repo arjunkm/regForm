@@ -35,6 +35,4 @@ process.once('SIGUSR2', function(){
   });
 });
 
-
-// BRING IN YOUR SCHEMAS & MODELS
 require('./users.model');
